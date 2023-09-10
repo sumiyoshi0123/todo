@@ -3,15 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TodoRequest;
+use App\Models\Category;
 use App\Models\Todo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Request;
 
 class TodoController extends Controller
 {
     public function index()
     {
-        $todos = Todo::all();
-        return view('index', compact('todos'));
+        $todos = Todo::with('category')->get();
+        $categories = Category::all();
+
+        return view('index', compact('todos','categories'));
     }
     public function store(TodoRequest $request)
     {

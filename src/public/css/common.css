@@ -8,6 +8,11 @@
     max-width: 1200px;
 }
 
+.header-utilities {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 .header__logo {
     color: #fff;
     text-decoration: none;
@@ -15,3 +20,7 @@
     font-size: 25px;
 }
 
+.header-nav__link {
+    color: #fff;
+    text-decoration: none;
+}
