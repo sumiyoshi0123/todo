@@ -24,7 +24,8 @@ class TodoRequest extends FormRequest
     public function rules()
     {
         return [
-            'content' => ['required', 'string', 'max:20']
+            'content' => ['required', 'string', 'max:20'],
+            'category_id' => ['required'],
         ];
     }
     public function messages()
@@ -33,6 +34,7 @@ class TodoRequest extends FormRequest
             'content.required' => 'todoを入力してください',
             'content.string' => 'Todoを文字列で入力してください',
             'content.max' => 'Todoを20字以下で入力してください',
+            'category_id.required' => 'カテゴリを入力してください'
         ];
     }
 }

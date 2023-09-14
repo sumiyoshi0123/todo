@@ -94,8 +94,12 @@
     font-weight: bold;
 }
 
-.todo-table__header-span {
+.todo-table__header-left {
     margin-right: 40px;
+}
+
+.todo-table__header-right {
+    margin-left: 85px;
 }
 
 .todo-table__item:first-of-type {

@@ -17,12 +17,22 @@ class TodoController extends Controller
 
         return view('index', compact('todos','categories'));
     }
+
+    public function search(Request $request)
+    {
+        $todos = Todo::with('category')->CategorySearch($request->category_id)->KeywordSearch($request->keyword)->get();
+        $categories = Category::all();
+
+        return view('index', compact('todos', 'categories'));
+    }
+
     public function store(TodoRequest $request)
     {
-        $todo = $request->only(['content']);
+        $todo = $request->only(['category_id', 'content']);
         Todo::create($todo);
         return redirect('/')->with('message', 'Todoを作成しました');
     }
+
     public function update(TodoRequest $request)
     {
         $todo = $request->only(['content']);
@@ -30,6 +40,7 @@ class TodoController extends Controller
 
         return redirect('/')->with('message', 'Todoを更新しました');
     }
+
     public function destroy(Request $request)
     {
         Todo::find($request->id)->delete();
